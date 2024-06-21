@@ -5,6 +5,8 @@ import json
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.core import callback
+from homeassistant.helpers.selector import SelectSelector, SelectSelectorConfig, TextSelector, TextSelectorConfig
+
 from . import WetterAlarmApiClient
 from .const import DOMAIN
 
@@ -14,6 +16,8 @@ _LOGGER = logging.getLogger(__name__)
 with open('custom_components/wetter_alarm/pois.json', 'r') as file:
     POIS = json.load(file)
 
+CANTONS = sorted(set(poi['canton'] for poi in POIS))
+
 class WetterAlarmConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
@@ -21,27 +25,16 @@ class WetterAlarmConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_step_user(self, user_input=None):
         errors = {}
         if user_input is not None:
-            if "poi_search" in user_input:
-                return await self.async_step_select_poi(user_input)
-
-            poi_id = user_input.get("poi_id", "")
-            client = WetterAlarmApiClient(poi_id)
-            valid_poi = await client.validate_poi_id_async(hass=self.hass)
-            if valid_poi:
-                poi_name = user_input.get("poi_name", "")
-                return self.async_create_entry(
-                    title="Wetter-Alarm",
-                    data={"pois": {(poi_name, poi_id)}},
-                )
-            else:
-                _LOGGER.error("async step_user determined invalid POI")
-                errors["base"] = "invalid_connection"
+            selected_canton = user_input.get("canton")
+            return await self.async_step_select_poi({"canton": selected_canton})
 
         return self.async_show_form(
             step_id="user",
             data_schema=vol.Schema(
                 {
-                    vol.Optional("poi_search"): str,
+                    vol.Required("canton"): SelectSelector(
+                        SelectSelectorConfig(options=CANTONS)
+                    ),
                 }
             ),
             errors=errors,
@@ -49,14 +42,17 @@ class WetterAlarmConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_step_select_poi(self, user_input=None):
         errors = {}
-        if user_input is not None:
+        selected_canton = user_input.get("canton")
+        if user_input is not None and "poi_search" in user_input:
             poi_search = user_input.get("poi_search", "").lower()
             matching_pois = [
                 poi for poi in POIS
-                if poi_search in poi['label_de'].lower() or
-                   poi_search in poi['label_fr'].lower() or
-                   poi_search in poi['label_it'].lower() or
-                   poi_search in poi['label_en'].lower()
+                if poi['canton'] == selected_canton and (
+                    poi_search in poi['label_de'].lower() or
+                    poi_search in poi['label_fr'].lower() or
+                    poi_search in poi['label_it'].lower() or
+                    poi_search in poi['label_en'].lower()
+                )
             ]
 
             if len(matching_pois) == 1:
@@ -71,7 +67,9 @@ class WetterAlarmConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     step_id="select_poi",
                     data_schema=vol.Schema(
                         {
-                            vol.Required("poi_id"): vol.In(options),
+                            vol.Required("poi_id"): SelectSelector(
+                                SelectSelectorConfig(options=options)
+                            ),
                         }
                     ),
                     errors=errors,
@@ -80,10 +78,15 @@ class WetterAlarmConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 errors["base"] = "no_pois_found"
 
         return self.async_show_form(
-            step_id="user",
+            step_id="select_poi",
             data_schema=vol.Schema(
                 {
-                    vol.Optional("poi_search"): str,
+                    vol.Required("canton"): SelectSelector(
+                        SelectSelectorConfig(options=CANTONS, default=selected_canton)
+                    ),
+                    vol.Optional("poi_search"): TextSelector(
+                        TextSelectorConfig(type="text")
+                    ),
                 }
             ),
             errors=errors,
