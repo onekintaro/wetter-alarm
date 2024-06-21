@@ -16,7 +16,7 @@ PLATFORMS: list[Platform] = [Platform.SENSOR]
 
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
-    """Set up Emu M-Bus Center from a config entry."""
+    """Set up Wetter-Alarm from a config entry."""
 
     hass.data.setdefault(DOMAIN, {})
 
