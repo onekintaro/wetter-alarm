@@ -1,6 +1,6 @@
 """Constant values for wetter-alarm integration."""
 
-DOMAIN = "wetter-alarm"
+DOMAIN = "wetter_alarm"
 
 ALARM_ID = "alarm_id"
 VALID_FROM = "valid_from"
