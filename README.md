@@ -29,7 +29,7 @@ This Integration will poll the [Wetter-Alarm](https://wetteralarm.ch/) API and e
 
 ### Automated (suggested):
 
-Just click here: [![Open in HACS.][my-hacs-badge]][open-in-hacs]
+Just click here: [![Open in HACS.][my-hacs-badge]][open-in-hacs-onekintaro]
 
 ### Manual:
 
@@ -93,6 +93,7 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 [hassfest-badge]: https://github.com/redlukas/wetter-alarm/actions/workflows/hassfest.yml/badge.svg
 [hassfest]: https://developers.home-assistant.io/blog/2020/04/16/hassfest/
 [open-in-hacs]: https://my.home-assistant.io/redirect/hacs_repository/?owner=redlukas&repository=wetter-alarm&category=integration
+[open-in-hacs-onekintaro]: https://my.home-assistant.io/redirect/hacs_repository/?owner=onekintaro&repository=wetter-alarm&category=integration
 [my-hacs-badge]: https://my.home-assistant.io/badges/hacs_repository.svg
 [overviewimg]: ./images/overview.png
 [metersimg]: ./images/meters.png
