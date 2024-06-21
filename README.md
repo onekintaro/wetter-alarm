@@ -65,7 +65,7 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 
 ---
 
-[logo]: ./logo.png
+[logo]: https://github.com/onekintaro/wetter-alarm/logo.png
 
 [integration_blueprint]: https://github.com/custom-components/integration_blueprint
 
