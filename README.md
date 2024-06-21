@@ -1,6 +1,6 @@
 # Wetter-Alarm [WIP]
 
-[![Logo][logo]]
+![Logo][logo]
 
 [![License][license-shield]](LICENSE)
 
