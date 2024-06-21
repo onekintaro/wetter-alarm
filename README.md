@@ -60,6 +60,7 @@ Click `ADD INTEGRATION` and search for "Wetter-Alarm".
 The Configuration flow will start when you click install.
 
 ## How to find the ID of your location
+You can find the ID of your location in the POI-Folder [here](POIs/).
 
 ## Contributions are welcome!
 
