@@ -3,7 +3,6 @@
 ![Logo][logo]
 
 [![License][license-shield]](LICENSE)
-
 [![hacs][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
 
