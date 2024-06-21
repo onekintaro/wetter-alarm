@@ -1,18 +1,12 @@
 # Wetter-Alarm [WIP]
 
-[![GitHub Release][releases-shield]][releases]
-[![GitHub Activity][commits-shield]][commits]
-[![License][license-shield]](LICENSE)
+[![logo]]
 
-[![pre-commit][pre-commit-shield]][pre-commit]
-[![Black][black-shield]][black]
-[![Validate with Hassfest][hassfest-badge]][hassfest]
+[![License][license-shield]](LICENSE)
 
 [![hacs][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
 
-[![Discord][discord-shield]][discord]
-[![Community Forum][forum-shield]][forum]
 
 **This component will set up the following platforms.**
 
@@ -29,7 +23,7 @@ This Integration will poll the [Wetter-Alarm](https://wetteralarm.ch/) API and e
 
 ### Automated (suggested):
 
-Just click here: [![Open in HACS.][my-hacs-badge]][open-in-hacs-onekintaro]
+Just click here: [![Open in HACS.][my-hacs-badge]][open-in-hacs]
 
 ### Manual:
 
@@ -67,33 +61,22 @@ You can find the ID of your location in the POI-Folder [here](POIs/).
 If you want to contribute to this please read the [Contribution guidelines](CONTRIBUTING.md)
 
 ## Credits
-
+Fork of [redlukas/wetter-alarm](https://github.com/redlukas/wetter-alarm).
 Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [integration_blueprint][integration_blueprint] template
 
 ---
 
+[logo]: ./logo.png
+
 [integration_blueprint]: https://github.com/custom-components/integration_blueprint
-[black]: https://github.com/psf/black
-[black-shield]: https://img.shields.io/badge/code%20style-black-000000.svg
-[commits-shield]: https://img.shields.io/github/commit-activity/y/redlukas/wetter-alarm.svg
-[commits]: https://github.com/redlukas/wetter-alarm/commits/main
+
 [hacs]: https://hacs.xyz
 [hacsbadge]: https://img.shields.io/badge/HACS-Default-green.svg
-[discord]: https://discord.gg/Qa5fW2R
-[discord-shield]: https://img.shields.io/discord/330944238910963714.svg?style=flat&logo=discord
-[forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
-[forum]: https://community.home-assistant.io/
-[license-shield]: https://img.shields.io/github/license/redlukas/wetter-alarm.svg
-[maintenance-shield]: https://img.shields.io/badge/maintainer-%40redlukas-blue.svg
-[pre-commit]: https://github.com/pre-commit/pre-commit
-[pre-commit-shield]: https://img.shields.io/badge/pre--commit-enabled-brightgreen
-[releases-shield]: https://img.shields.io/github/release/redlukas/wetter-alarm.svg
-[releases]: https://github.com/redlukas/wetter-alarm/releases
-[user_profile]: https://github.com/redlukas
-[hassfest-badge]: https://github.com/redlukas/wetter-alarm/actions/workflows/hassfest.yml/badge.svg
-[hassfest]: https://developers.home-assistant.io/blog/2020/04/16/hassfest/
-[open-in-hacs]: https://my.home-assistant.io/redirect/hacs_repository/?owner=redlukas&repository=wetter-alarm&category=integration
-[open-in-hacs-onekintaro]: https://my.home-assistant.io/redirect/hacs_repository/?owner=onekintaro&repository=wetter-alarm&category=integration
+
+[license-shield]: https://img.shields.io/github/license/onekintaro/wetter-alarm.svg
+[maintenance-shield]: https://img.shields.io/badge/maintainer-%40onekintaro-blue.svg
+
+[user_profile]: https://github.com/onekintaro
+
+[open-in-hacs]: https://my.home-assistant.io/redirect/hacs_repository/?owner=onekintaro&repository=wetter-alarm&category=integration
 [my-hacs-badge]: https://my.home-assistant.io/badges/hacs_repository.svg
-[overviewimg]: ./images/overview.png
-[metersimg]: ./images/meters.png
