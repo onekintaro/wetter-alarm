@@ -1,4 +1,4 @@
-# Wetter-Alarm [WIP]
+# Wetter-Alarm [WIP/Rework]
 
 ![Logo][logo]
 
