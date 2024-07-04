@@ -49,17 +49,6 @@ Just click here: [![Open in HACS.][my-hacs-badge]][open-in-hacs]
 5. Place the files you downloaded in the new directory (folder) you created.
 6. Restart Home Assistant
 
-Using your HA configuration directory (folder) as a starting point you should now also have this:
-
-```text
-custom_components/wetter-alarm/__init__.py
-custom_components/wetter-alarm/config_flow.py
-custom_components/wetter-alarm/manifest.json
-custom_components/wetter-alarm/sensor.py
-custom_components/wetter-alarm/wetter_alarm_client.py
-custom_components/wetter-alarm/translations/en.json
-```
-
 ## Configuration
 
 No matter which way you installed the Integration, you need to restart Home Assistant before configuring the integration.
