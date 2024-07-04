@@ -18,6 +18,22 @@
 Wetter-Alarm is an app that alerts you of severe weather events in Switzerland.
 This Integration will poll the [Wetter-Alarm](https://wetteralarm.ch/) API and expose the available Alerts to Home Assistant.
 
+## Features
+- Get Alerts from Wetter-Alarm API as Sensors
+- Weather Entry & Forecast in Home Assistant
+- Configuration via UI
+- Reconfigure via UI
+- Search for POIs in Configuration Flow
+- Multi-Language Support (English, German, French, Italian)
+
+## Planned Features
+- Weather Sensors
+- Flood Alerts and other Alerts
+- Earthquake Alerts (if available in API, currently not available in the API)
+- Avalanche Alerts (if available in API, currently not available in the API)
+- Livecam Integration
+- and more... :)
+
 ## Installation
 
 ### Automated (suggested):
