@@ -1,7 +1,7 @@
 {
   "domain": "wetter_alarm",
   "name": "Wetter-Alarm",
-  "codeowners": ["@redlukas", "@onekintaro"],
+  "codeowners": ["@onekintaro"],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/onekintaro/wetter-alarm",
