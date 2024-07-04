@@ -54,18 +54,19 @@ The Configuration flow will start when you click install.
 
 ## How to find the ID of your location
 You can find the ID of your location in the POI-Folder [here](POIs/).
+Since Version 0.4.0 you can also search for POIs in the configuration flow.
+
 
 ## Contributions are welcome!
-
 If you want to contribute to this please read the [Contribution guidelines](CONTRIBUTING.md)
 
 ## Credits
-Fork of [redlukas/wetter-alarm](https://github.com/redlukas/wetter-alarm).
-Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [integration_blueprint][integration_blueprint] template
+Based on Fork of [redlukas/wetter-alarm](https://github.com/redlukas/wetter-alarm).
+Code template from [@Ludeeus](https://github.com/ludeeus)'s [integration_blueprint][integration_blueprint]
 
 ---
 
-[logo]: https://github.com/onekintaro/wetter-alarm/blob/master/logo.png?raw=true
+[logo]: https://raw.githubusercontent.com/onekintaro/wetter-alarm/main/logo.png
 
 [integration_blueprint]: https://github.com/custom-components/integration_blueprint
 
