@@ -1,0 +1,122 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configuration d'Alerte Météo",
+        "description": "Choisissez comment vous souhaitez configurer le POI.",
+        "data": {
+          "set_poi_by": "Sélectionnez une option",
+          "poi_language": "Langue du nom du POI"
+        }
+      },
+      "enter_id": {
+        "title": "Entrer l'ID du POI",
+        "description": "Veuillez entrer l'ID du POI.",
+        "data": {
+          "poi_id": "ID du POI"
+        }
+      },
+      "search": {
+        "title": "Recherche par canton et lieu",
+        "description": "Sélectionnez un canton, choisissez des types de POI et entrez éventuellement un lieu pour rechercher des POI.",
+        "data": {
+          "canton": "Canton",
+          "poi_kind": "Type de POI",
+          "poi_search": "Lieu"
+        }
+      },
+      "select_poi": {
+        "title": "Sélectionner un POI",
+        "description": "Plusieurs POI trouvés. Veuillez en sélectionner un.",
+        "data": {
+          "poi_id": "POI"
+        }
+      },
+      "name": {
+        "title": "Définir le nom du POI",
+        "description": "Nom du POI : {poi_name}\nVous pouvez définir un nom personnalisé pour celui-ci.",
+        "data": {
+          "poi_name": "Nom du POI",
+          "custom_name": "Nom personnalisé"
+        }
+      }
+    },
+    "error": {
+      "error_no_poi_found": "Aucun POI trouvé. Veuillez réessayer.",
+      "error_no_canton": "Veuillez sélectionner un canton.",
+      "error_no_poi_id": "Veuillez entrer un ID de POI.",
+      "error_invalid_poi_id": "ID de POI invalide."
+    },
+    "create_entry": {
+      "default": "Alerte Météo configurée avec succès avec le POI sélectionné."
+    }
+  },
+  "selector": {
+    "poi_language": {
+      "options": {
+        "label_de": "Allemand",
+        "label_fr": "Français",
+        "label_it": "Italien",
+        "label_en": "Anglais"
+      }
+    },
+    "set_poi_by": {
+      "options": {
+        "set_by_id": "Entrer un ID de POI",
+        "set_by_search": "Rechercher un POI par canton et lieu",
+        "set_by_map": "Sélectionner sur la carte"
+      }
+    },
+    "canton": {
+      "options": {
+        "none": "Veuillez sélectionner un canton",
+        "AG": "Argovie",
+        "AI": "Appenzell Rhodes-Intérieures",
+        "AR": "Appenzell Rhodes-Extérieures",
+        "BE": "Berne",
+        "BL": "Bâle-Campagne",
+        "BS": "Bâle",
+        "FR": "Fribourg",
+        "GE": "Genève",
+        "GL": "Glaris",
+        "GR": "Grisons",
+        "JU": "Jura",
+        "LU": "Lucerne",
+        "NE": "Neuchâtel",
+        "NW": "Nidwald",
+        "OW": "Obwald",
+        "SG": "Saint-Gall",
+        "SH": "Schaffhouse",
+        "SO": "Soleure",
+        "SZ": "Schwytz",
+        "TG": "Thurgovie",
+        "TI": "Tessin",
+        "UR": "Uri",
+        "VD": "Vaud",
+        "VS": "Valais",
+        "ZG": "Zoug",
+        "ZH": "Zurich",
+        "other": "Autre (Sans canton)"
+      }
+    },
+    "poi_kind": {
+      "options": {
+        "airport": "Aéroport",
+        "alpine_hut": "Cabane alpine",
+        "building_of_interest": "Bâtiment d'intérêt",
+        "campground": "Camping",
+        "golf": "Golf",
+        "pass": "Col",
+        "peak": "Sommet",
+        "ski_area": "Domaine skiable",
+        "stadium": "Stade",
+        "town": "Ville",
+        "town_section": "Quartier",
+        "unknown": "Inconnu",
+        "valley": "Vallée",
+        "viewpoint": "Point de vue",
+        "zoo": "Zoo"
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "entity": {
+    "sensor": {
+      "alarm_id": {
+        "name": "Alarm ID"
+      }
+    }
+  },
+  "config": {
+    "step": {
+      "user": {
+        "title": "Wetter-Alarm Setup",
+        "description": "Choose how you want to set up the POI.",
+        "data": {
+          "set_poi_by": "Select an option",
+          "poi_language": "POI Name Language"
+        }
+      },
+      "enter_id": {
+        "title": "Enter POI ID",
+        "description": "Please enter the POI ID.",
+        "data": {
+          "poi_id": "POI ID"
+        }
+      },
+      "search": {
+        "title": "Search by Canton and Location",
+        "description": "Select a canton, choose POI types, and optionally enter a location to search for POIs.",
+        "data": {
+          "canton": "Canton",
+          "poi_kind": "POI Type",
+          "poi_search": "Location"
+        }
+      },
+      "select_poi": {
+        "title": "Select POI",
+        "description": "Multiple POIs found. Please select one.",
+        "data": {
+          "poi_id": "POI"
+        }
+      },
+      "name": {
+        "title": "Set POI Name",
+        "description": "POI-Name: {poi_name}\nYou can set a custom name for it.",
+        "data": {
+          "poi_name": "POI Name",
+          "custom_name": "Custom Name"
+        }
+      }
+    },
+    "error": {
+      "error_no_poi_found": "No POI found. Please try again.",
+      "error_no_canton": "Please select a canton.",
+      "error_no_poi_id": "Please enter a POI ID.",
+      "error_invalid_poi_id": "Invalid POI ID."
+    },
+    "create_entry": {
+      "default": "Successfully set up Wetter-Alarm with the selected POI."
+    }
+  },
+  "selector": {
+    "poi_language": {
+      "options": {
+        "label_de": "German",
+        "label_fr": "French",
+        "label_it": "Italian",
+        "label_en": "English"
+      }
+    },
+    "set_poi_by": {
+      "options": {
+        "set_by_id": "Enter a POI ID",
+        "set_by_search": "Search POI by Canton and Location",
+        "set_by_map": "Select on Map"
+      }
+    },
+    "canton": {
+      "options": {
+        "none": "Please select a canton",
+        "AG": "Aargau",
+        "AI": "Appenzell Inner-Rhodes",
+        "AR": "Appenzell Outer-Rhodes",
+        "BE": "Bern",
+        "BL": "Basel-District",
+        "BS": "Basel",
+        "FR": "Fribourg",
+        "GE": "Geneva",
+        "GL": "Glarus",
+        "GR": "Grisons",
+        "JU": "Jura",
+        "LU": "Lucerne",
+        "NE": "Neuchâtel",
+        "NW": "Nidwalden",
+        "OW": "Obwalden",
+        "SG": "St. Gallen",
+        "SH": "Schaffhausen",
+        "SO": "Solothurn",
+        "SZ": "Schwyz",
+        "TG": "Thurgau",
+        "TI": "Ticino",
+        "UR": "Uri",
+        "VD": "Vaud",
+        "VS": "Valais",
+        "ZG": "Zug",
+        "ZH": "Zurich",
+        "other": "Other (Without Canton)"
+      }
+    },
+    "poi_kind": {
+      "options": {
+        "airport": "Airport",
+        "alpine_hut": "Alpine Hut",
+        "building_of_interest": "Building of Interest",
+        "campground": "Campground",
+        "golf": "Golf",
+        "pass": "Pass",
+        "peak": "Peak",
+        "ski_area": "Ski Area",
+        "stadium": "Stadium",
+        "town": "Town",
+        "town_section": "Town Section",
+        "unknown": "Unknown",
+        "valley": "Valley",
+        "viewpoint": "Viewpoint",
+        "zoo": "Zoo"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "domain": "wetter_alarm",
+  "name": "Wetter-Alarm",
+  "codeowners": ["@redlukas", "@onekintaro"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/onekintaro/wetter-alarm",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/onekintaro/wetter-alarm/issues",
+  "requirements": [],
+  "version": "0.4.1",
+  "icon": "icon.png"
+}

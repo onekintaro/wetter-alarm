@@ -1,0 +1,122 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Wetter-Alarm Einrichtung",
+        "description": "Wähle, wie du den POI einrichten möchtest.",
+        "data": {
+          "set_poi_by": "Option auswählen",
+          "poi_language": "POI Name Sprache"
+        }
+      },
+      "enter_id": {
+        "title": "POI ID eingeben",
+        "description": "Bitte gib die POI ID ein.",
+        "data": {
+          "poi_id": "POI ID"
+        }
+      },
+      "search": {
+        "title": "Nach Kanton und Ort suchen",
+        "description": "Wähle einen Kanton, wähle POI-Typen und gib optional einen Ort ein, um nach POIs zu suchen.",
+        "data": {
+          "canton": "Kanton",
+          "poi_kind": "POI Typ",
+          "poi_search": "Ort"
+        }
+      },
+      "select_poi": {
+        "title": "POI auswählen",
+        "description": "Mehrere POIs gefunden. Bitte wähle einen aus.",
+        "data": {
+          "poi_id": "POI"
+        }
+      },
+      "name": {
+        "title": "POI Name festlegen",
+        "description": "POI-Name: {poi_name}\nDu kannst einen benutzerdefinierten Namen festlegen.",
+        "data": {
+          "poi_name": "POI Name",
+          "custom_name": "Benutzerdefinierter Name"
+        }
+      }
+    },
+    "error": {
+      "error_no_poi_found": "Kein POI gefunden. Bitte versuche es erneut.",
+      "error_no_canton": "Bitte wähle einen Kanton aus.",
+      "error_no_poi_id": "Bitte gib eine POI ID ein.",
+      "error_invalid_poi_id": "Ungültige POI ID."
+    },
+    "create_entry": {
+      "default": "Wetter-Alarm erfolgreich mit dem ausgewählten POI eingerichtet."
+    }
+  },
+  "selector": {
+    "poi_language": {
+      "options": {
+        "label_de": "Deutsch",
+        "label_fr": "Französisch",
+        "label_it": "Italienisch",
+        "label_en": "Englisch"
+      }
+    },
+    "set_poi_by": {
+      "options": {
+        "set_by_id": "Gib eine POI ID ein",
+        "set_by_search": "POI nach Kanton und Ort suchen",
+        "set_by_map": "Auf Karte auswählen"
+      }
+    },
+    "canton": {
+      "options": {
+        "none": "Bitte wähle einen Kanton",
+        "AG": "Aargau",
+        "AI": "Appenzell Innerrhoden",
+        "AR": "Appenzell Ausserrhoden",
+        "BE": "Bern",
+        "BL": "Basel-Landschaft",
+        "BS": "Basel",
+        "FR": "Freiburg",
+        "GE": "Genf",
+        "GL": "Glarus",
+        "GR": "Graubünden",
+        "JU": "Jura",
+        "LU": "Luzern",
+        "NE": "Neuenburg",
+        "NW": "Nidwalden",
+        "OW": "Obwalden",
+        "SG": "St. Gallen",
+        "SH": "Schaffhausen",
+        "SO": "Solothurn",
+        "SZ": "Schwyz",
+        "TG": "Thurgau",
+        "TI": "Tessin",
+        "UR": "Uri",
+        "VD": "Waadt",
+        "VS": "Wallis",
+        "ZG": "Zug",
+        "ZH": "Zürich",
+        "other": "Andere (Ohne Kanton)"
+      }
+    },
+    "poi_kind": {
+      "options": {
+        "airport": "Flughafen",
+        "alpine_hut": "Alpenhütte",
+        "building_of_interest": "Interessantes Gebäude",
+        "campground": "Campingplatz",
+        "golf": "Golf",
+        "pass": "Pass",
+        "peak": "Gipfel",
+        "ski_area": "Skigebiet",
+        "stadium": "Stadion",
+        "town": "Stadt",
+        "town_section": "Stadtteil",
+        "unknown": "Unbekannt",
+        "valley": "Tal",
+        "viewpoint": "Aussichtspunkt",
+        "zoo": "Zoo"
+      }
+    }
+  }
+}

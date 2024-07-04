@@ -1,0 +1,122 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configurazione Allarme Meteo",
+        "description": "Scegli come impostare il POI.",
+        "data": {
+          "set_poi_by": "Seleziona un'opzione",
+          "poi_language": "Lingua del Nome POI"
+        }
+      },
+      "enter_id": {
+        "title": "Inserisci ID POI",
+        "description": "Per favore, inserisci l'ID del POI.",
+        "data": {
+          "poi_id": "ID POI"
+        }
+      },
+      "search": {
+        "title": "Cerca per Cantone e Luogo",
+        "description": "Seleziona un cantone, scegli i tipi di POI e inserisci eventualmente un luogo per cercare i POI.",
+        "data": {
+          "canton": "Cantone",
+          "poi_kind": "Tipo di POI",
+          "poi_search": "Luogo"
+        }
+      },
+      "select_poi": {
+        "title": "Seleziona POI",
+        "description": "Trovati più POI. Si prega di selezionarne uno.",
+        "data": {
+          "poi_id": "POI"
+        }
+      },
+      "name": {
+        "title": "Imposta Nome POI",
+        "description": "Nome POI: {poi_name}\nPuoi impostare un nome personalizzato.",
+        "data": {
+          "poi_name": "Nome POI",
+          "custom_name": "Nome Personalizzato"
+        }
+      }
+    },
+    "error": {
+      "error_no_poi_found": "Nessun POI trovato. Per favore, riprova.",
+      "error_no_canton": "Seleziona un cantone.",
+      "error_no_poi_id": "Inserisci un ID POI.",
+      "error_invalid_poi_id": "ID POI non valido."
+    },
+    "create_entry": {
+      "default": "Allarme Meteo configurato con successo con il POI selezionato."
+    }
+  },
+  "selector": {
+    "poi_language": {
+      "options": {
+        "label_de": "Tedesco",
+        "label_fr": "Francese",
+        "label_it": "Italiano",
+        "label_en": "Inglese"
+      }
+    },
+    "set_poi_by": {
+      "options": {
+        "set_by_id": "Inserisci un ID POI",
+        "set_by_search": "Cerca POI per Cantone e Luogo",
+        "set_by_map": "Seleziona sulla Mappa"
+      }
+    },
+    "canton": {
+      "options": {
+        "none": "Seleziona un cantone",
+        "AG": "Argovia",
+        "AI": "Appenzello Interno",
+        "AR": "Appenzello Esterno",
+        "BE": "Berna",
+        "BL": "Basilea-Campagna",
+        "BS": "Basilea",
+        "FR": "Friburgo",
+        "GE": "Ginevra",
+        "GL": "Glarona",
+        "GR": "Grigioni",
+        "JU": "Giura",
+        "LU": "Lucerna",
+        "NE": "Neuchâtel",
+        "NW": "Nidvaldo",
+        "OW": "Obvaldo",
+        "SG": "San Gallo",
+        "SH": "Sciaffusa",
+        "SO": "Soletta",
+        "SZ": "Svitto",
+        "TG": "Turgovia",
+        "TI": "Ticino",
+        "UR": "Uri",
+        "VD": "Vaud",
+        "VS": "Vallese",
+        "ZG": "Zugo",
+        "ZH": "Zurigo",
+        "other": "Altro (Senza Cantone)"
+      }
+    },
+    "poi_kind": {
+      "options": {
+        "airport": "Aeroporto",
+        "alpine_hut": "Rifugio alpino",
+        "building_of_interest": "Edificio di interesse",
+        "campground": "Campeggio",
+        "golf": "Golf",
+        "pass": "Passo",
+        "peak": "Cima",
+        "ski_area": "Area sciistica",
+        "stadium": "Stadio",
+        "town": "Città",
+        "town_section": "Sezione della città",
+        "unknown": "Sconosciuto",
+        "valley": "Valle",
+        "viewpoint": "Punto di vista",
+        "zoo": "Zoo"
+      }
+    }
+  }
+}
