@@ -8,31 +8,41 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 
 from .const import DOMAIN, WETTERALARM_COORDINATOR, WETTERALARM_DATA
-from .wetter_alarm_client import WetterAlarmApiClient
+from .consts.options import Options as Opt
+from .client import WetterAlarmApiClient
 from .coordinator import WetterAlarmCoordinator  # Importiere den Coordinator
+
 
 _LOGGER = logging.getLogger(__name__)
 
-PLATFORMS: list[Platform] = [Platform.SENSOR, Platform.WEATHER]
-
+PLATFORMS: list[Platform] = [Platform.SENSOR, Platform.WEATHER, Platform.CALENDAR]
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up Wetter-Alarm from a config entry."""
 
     hass.data.setdefault(DOMAIN, {})
+    is_configured = config_entry.options.get(Opt.Base.BASE_CONFIG, {}).get(Opt.Base.Options.IS_CONFIGURED, False)
 
-    poi_id = config_entry.data["poi_id"]
-    client = WetterAlarmApiClient(poi_id, config_entry)
+    if not is_configured:
+        hass.components.persistent_notification.create(
+            "Configuration not completed.",
+            title="Wetter-Alarm",
+            notification_id="wetter_alarm_config"
+        )
+        _LOGGER.error(f"Wetter-Alarm: Configuration for POI {config_entry.title} not completed. Please use Configure button to complete configuration.")
+        return False
+    # else:
+    #     _LOGGER.error(f"Wetter-Alarm: Configuration for POI {config_entry.title} OK.")
 
+    #TODO: Redo this part
+    client = WetterAlarmApiClient(config_entry)
     valid_connection = await client.validate_poi_id_async(hass=hass)
-
     if not valid_connection:
         return False
-
-    poi_name = config_entry.data["poi_data"]["name"]
+    #end part
 
     coordinator = WetterAlarmCoordinator(
-        hass=hass, logger=_LOGGER, config_entry=config_entry, poi_name=poi_name, poi_id=poi_id
+        hass=hass, config_entry=config_entry
     )
     
     await coordinator.async_config_entry_first_refresh()
