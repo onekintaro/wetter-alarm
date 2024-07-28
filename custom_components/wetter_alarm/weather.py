@@ -12,7 +12,9 @@ from homeassistant.const import (
     UnitOfTemperature,
 )
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.typing import ConfigType
+from homeassistant.util import slugify
 
 from .const import (
     ATTRIBUTION,
@@ -20,6 +22,7 @@ from .const import (
     WETTERALARM_COORDINATOR,
     WETTERALARM_DATA,
 )
+from .consts.devices import DeviceConst
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -30,9 +33,12 @@ async def async_setup_entry(
     """Add a weather entity from a config_entry."""
     hass_data = hass.data[DOMAIN][entry.entry_id]
     coordinator = hass_data[WETTERALARM_COORDINATOR]
-    wetteralarm_data = hass_data[WETTERALARM_DATA]
-    async_add_entities([WetterAlarmWeather(entry.data, wetteralarm_data, coordinator)], False)
-
+    wetteralarm_data = hass_data[WETTERALARM_DATA]["weather_data"]
+    weather_device = coordinator.data['devices'][DeviceConst.WEATHER]
+    if weather_device["active"] and wetteralarm_data:
+        weather_entry = weather_device['entries'].get('weather', [])
+        if weather_entry:
+            async_add_entities([WetterAlarmWeather(entry.data, wetteralarm_data, coordinator)], False)
 
 class WetterAlarmWeather(WeatherEntity):
     """Implementation of Wetter-Alarm weather."""
@@ -41,11 +47,10 @@ class WetterAlarmWeather(WeatherEntity):
         """Initialize the platform with a data instance and site."""
         self._wetteralarm_data = wetteralarm_data
         self._coordinator = coordinator
-        self._poi_id = entry_data["poi_id"]
-        self._poi_name = entry_data["poi_data"]["label_de"].replace(" ", "_").lower()
-        self._attr_unique_id = f"{coordinator.get_poi_id}_weather"
         self._attr_name = f"{coordinator._name} Weather"
-        _LOGGER.debug(f"Setting up weather with id {self._attr_unique_id}")
+        self._attr_unique_id = slugify(self._attr_name)
+        
+        #_LOGGER.debug(f"Setting up weather with id {self._attr_unique_id}")
         super().__init__()
 
     async def async_forecast_daily(self) -> list[Forecast] | None:
@@ -60,6 +65,11 @@ class WetterAlarmWeather(WeatherEntity):
     def name(self):
         """Return the name of the sensor."""
         return self._attr_name
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Return the device info."""
+        return self._coordinator.get_device_info(DeviceConst.WEATHER)
 
     @property
     def condition(self):
