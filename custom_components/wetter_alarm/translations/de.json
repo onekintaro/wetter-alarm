@@ -1,4 +1,274 @@
 {
+  "title": "Wetter-Alarm",
+  "device": {
+    "device_hub": {
+      "name": "{poi_name_short} Hub"
+    },
+    "device_meteo_alerts": {
+      "name": "{poi_name_short} Wetter Alarme"
+    },
+    "device_meteo_hail_alerts": {
+      "name": "{poi_name_short} Wetter und Hagel Alarme"
+    },
+    "device_flood_alerts": {
+      "name": "{poi_name_short} Hochwasser Alarme"
+    },
+    "device_wind_alerts": {
+      "name": "{poi_name_short} Wind und Sturm Alarme"
+    },
+    "device_snow_ice_alerts": {
+      "name": "{poi_name_short} Schnee und Eis Alarme"
+    },
+    "device_avalanche_alerts": {
+      "name": "{poi_name_short} Lawinen Alarme"
+    },
+    "device_earthquake_alerts": {
+      "name": "{poi_name_short} Erdbeben Alarme"
+    },
+    "device_landslide_alerts": {
+      "name": "{poi_name_short} Erdrutsch Alarme"
+    },
+    "device_forest_fire_alerts": {
+      "name": "{poi_name_short} Waldbrand Alarme"
+    },
+    "device_personal_alerts": {
+      "name": "{poi_name_short} Persönliche Alarme"
+    },
+    "device_maps": {
+      "name": "{poi_name_short} Karten"
+    },
+    "device_lightning": {
+      "name": "{poi_name_short} Blitze"
+    },
+    "device_weather": {
+      "name": "{poi_name_short} Wetter"
+    },
+    "device_camera": {
+      "name": "{poi_name_short} Livecams"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "info_id": {
+        "name": "POI ID"
+      },
+      "info_kind": {
+        "name": "POI Typ"
+      },
+      "info_latitude": {
+        "name": "POI Breite"
+      },
+      "info_longitude": {
+        "name": "POI Länge"
+      },
+      "info_timezone": {
+        "name": "POI Zeitzone"
+      },
+      "info_zip": {
+        "name": "POI PLZ"
+      },
+      "info_canton": {
+        "name": "POI Kanton"
+      },
+      "info_name": {
+        "name": "POI Name"
+      },
+      "info_parent_name": {
+        "name": "POI Übergeordneter Name"
+      },
+      "info_full_name": {
+        "name": "POI Vollständiger Name"
+      },
+      "info_external_url": {
+        "name": "POI Externe URL"
+      },
+      "info_country": {
+        "name": "POI Land"
+      },
+      "info_is_international": {
+        "name": "POI Ist International"
+      },
+      "last_update": {
+        "name": "Letztes Update"
+      },
+      "alarm_count": {
+        "name": "Alarmanzahl"
+      },
+      "alarm_selected": {
+        "name": "Ausgewählter Alarm"
+      },
+      "alarm_has_alerts": {
+        "name": "Hat Warnungen"
+      },
+      "alarm_id": {
+        "name": "Alarm ID"
+      },
+      "alarm_valid_from": {
+        "name": "Gültig ab"
+      },
+      "alarm_valid_to": {
+        "name": "Gültig bis"
+      },
+      "alarm_priority": {
+        "name": "Priorität"
+      },
+      "alarm_region": {
+        "name": "Region"
+      },
+      "alarm_title": {
+        "name": "Titel"
+      },
+      "alarm_info": {
+        "name": "Info"
+      },
+      "alarm_signature": {
+        "name": "Signatur"
+      },
+      "alarm_paragraph": {
+        "name": "Absatz"
+      },
+      "alarm_cantons": {
+        "name": "Kantone"
+      },
+      "alarm_calendar": {
+        "name": "Alarm Kalender"
+      },
+      "weather_condition": {
+        "name": "Wetterzustand"
+      },
+      "weather_temperature": {
+        "name": "Temperatur"
+      },
+      "weather_temperature_min": {
+        "name": "Mindesttemperatur"
+      },
+      "weather_temperature_max": {
+        "name": "Maximaltemperatur"
+      },
+      "weather_wind_speed": {
+        "name": "Windgeschwindigkeit"
+      },
+      "weather_wind_chill_temperature": {
+        "name": "Gefühlte Temperatur"
+      },
+      "weather_wind_speed_mean": {
+        "name": "Durchschnittliche Windgeschwindigkeit"
+      },
+      "weather_wind_speed_max": {
+        "name": "Maximale Windgeschwindigkeit"
+      },
+      "weather_wind_direction": {
+        "name": "Windrichtung"
+      },
+      "weather_wind_direction_name": {
+        "name": "Windrichtungsname"
+      },
+      "weather_insolation": {
+        "name": "Einstrahlung"
+      },
+      "weather_insolation_max": {
+        "name": "Maximale Einstrahlung"
+      },
+      "weather_precipitation_amount": {
+        "name": "Niederschlagsmenge"
+      },
+      "weather_precipitation_probability": {
+        "name": "Niederschlagswahrscheinlichkeit"
+      },
+      "weather_icon": {
+        "name": "Wettersymbol"
+      },
+      "weather_mood": {
+        "name": "Stimmung"
+      },
+      "weather_lunar_phase": {
+        "name": "Mondphase"
+      },
+      "weather_lunar_phase_time": {
+        "name": "Mondphasenzeit"
+      },
+      "weather_lunar_phase_percentage": {
+        "name": "Mondphasenprozentsatz"
+      },
+      "weather_sunrise": {
+        "name": "Sonnenaufgang"
+      },
+      "weather_sunset": {
+        "name": "Sonnenuntergang"
+      },
+      "weather": {
+        "name": "Wetter"
+      },
+      "cam_live": {
+        "name": "Livecam"
+      },
+      "map_lightning": {
+        "name": "Blitz"
+      },
+      "map_rain": {
+        "name": "Regen"
+      },
+      "map_snow": {
+        "name": "Schnee"
+      },
+      "map_temperature": {
+        "name": "Temperatur"
+      },
+      "map_wind": {
+        "name": "Wind"
+      },
+      "map_weather": {
+        "name": "Wetter"
+      },
+      "map_forecast": {
+        "name": "Vorhersage"
+      },
+      "map_satellite": {
+        "name": "Satellit"
+      },
+      "map_radar": {
+        "name": "Radar"
+      },
+      "map_sunshine": {
+        "name": "Sonnenschein"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "base": {
+        "title": "Wetter-Alarm Basiskonfiguration",
+        "description": "Grundkonfiguration für die Wetter-Alarm Integration.",
+        "data": {
+          "poi_language": "API Sprache",
+          "poi_name": "POI Name",
+          "poi_name_short": "POI Name (Kurz)",
+          "custom_name": "Benutzerdefinierter Name",
+          "update_interval": "Update Intervall",
+          "update_interval_type": "Update Intervall Typ",
+          "remove_unused": "Nicht verwendete Sensoren löschen. Wenn aktiviert, werden alle nicht verwendeten Sensoren automatisch gelöscht."
+        }
+      },
+      "entitys": {
+        "title": "Wetter-Alarm Konfiguration",
+        "description": "Aktiviere oder deaktiviere die zu verwendenden Entitäten.\nLasse die Auswahl leer, um das Gerät zu deaktivieren.",
+        "data": {
+          "device_weather": "Wettergeräte Entitäten",
+          "device_meteo_alerts": "Wetter Alarme",
+          "device_flood": "Hochwasser Alarme",
+          "device_wind": "Wind/Sturm Alarme",
+          "device_snow_ice": "Schnee/Eis Alarme",
+          "device_avalanche": "Lawinen Alarme",
+          "device_earthquake": "Erdbeben Alarme",
+          "device_landslide": "Erdrutsch Alarme",
+          "device_forest_fire": "Walbrand Alarme",
+          "device_personal": "Persönliche Alarme",
+          "device_maps": "Karten",
+          "device_camera": "Livecams"
+        }
+      }
+    }
+  },
   "config": {
     "step": {
       "user": {
@@ -6,7 +276,7 @@
         "description": "Wähle, wie du den POI einrichten möchtest.",
         "data": {
           "set_poi_by": "Option auswählen",
-          "poi_language": "POI Name Sprache"
+          "poi_language": "API Sprache"
         }
       },
       "enter_id": {
@@ -32,12 +302,35 @@
           "poi_id": "POI"
         }
       },
-      "name": {
-        "title": "POI Name festlegen",
-        "description": "POI-Name: {poi_name}\nDu kannst einen benutzerdefinierten Namen festlegen.",
+      "base": {
+        "title": "Wetter-Alarm Basiskonfiguration",
+        "description": "Grundkonfiguration für die Wetter-Alarm Integration.",
         "data": {
+          "poi_language": "API Sprache",
           "poi_name": "POI Name",
-          "custom_name": "Benutzerdefinierter Name"
+          "poi_name_short": "POI Name (Kurz)",
+          "custom_name": "Benutzerdefinierter Name",
+          "update_interval": "Update Intervall",
+          "update_interval_type": "Update Intervall Typ",
+          "remove_unused": "Nicht verwendete Sensoren löschen. Wenn aktiviert, werden alle nicht verwendeten Sensoren automatisch gelöscht."
+        }
+      },
+      "entitys": {
+        "title": "Wetter-Alarm Konfiguration",
+        "description": "Aktiviere oder deaktiviere die zu verwendenden Entitäten.\nLasse die Auswahl leer, um das Gerät zu deaktivieren.",
+        "data": {
+          "device_weather": "Wettergeräte Entitäten",
+          "device_meteo_alerts": "Wetter Alarme",
+          "device_flood": "Hochwasser Alarme",
+          "device_wind": "Wind/Sturm Alarme",
+          "device_snow_ice": "Schnee/Eis Alarme",
+          "device_avalanche": "Lawinen Alarme",
+          "device_earthquake": "Erdbeben Alarme",
+          "device_landslide": "Erdrutsch Alarme",
+          "device_forest_fire": "Walbrand Alarme",
+          "device_personal": "Persönliche Alarme",
+          "device_maps": "Karten",
+          "device_camera": "Livecams"
         }
       }
     },
@@ -48,16 +341,16 @@
       "error_invalid_poi_id": "Ungültige POI ID."
     },
     "create_entry": {
-      "default": "Wetter-Alarm erfolgreich mit dem ausgewählten POI eingerichtet."
+      "default": "Wetter-Alarm wurde erfolgreich mit dem ausgewählten POI eingerichtet."
     }
   },
   "selector": {
     "poi_language": {
       "options": {
-        "label_de": "Deutsch",
-        "label_fr": "Französisch",
-        "label_it": "Italienisch",
-        "label_en": "Englisch"
+        "de": "Deutsch",
+        "fr": "Französisch",
+        "it": "Italienisch",
+        "en": "Englisch"
       }
     },
     "set_poi_by": {
@@ -99,6 +392,12 @@
         "other": "Andere (Ohne Kanton)"
       }
     },
+    "update_interval_type": {
+      "options": {
+        "minutes": "Minuten",
+        "hours": "Stunden"
+      }
+    },
     "poi_kind": {
       "options": {
         "airport": "Flughafen",
@@ -116,6 +415,19 @@
         "valley": "Tal",
         "viewpoint": "Aussichtspunkt",
         "zoo": "Zoo"
+      }
+    },
+    "device_weather": {
+      "options": {
+        "weather_sensors": "Wettersensoren",
+        "weather_entity": "Wetterentität"
+      }
+    },
+    "device_meteo_alerts": {
+      "options": {
+        "meteo_alert_sensors": "Wetter Alarm Sensoren",
+        "meteo_alert_calendar": "Wetter Alarm Kalender",
+        "hail_alert_sensors": "Wetter/Hagel Alarm Sensoren"
       }
     }
   }
