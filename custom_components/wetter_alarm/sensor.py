@@ -1,161 +1,97 @@
 from __future__ import annotations
 
 import logging
-from datetime import timedelta, datetime, timezone
+from datetime import datetime
 from typing import Any
 
-from homeassistant.components.sensor import SensorEntity, SensorDeviceClass, SensorStateClass
+from homeassistant.components.sensor import SensorEntity, SensorDeviceClass
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import (
-    ATTR_ATTRIBUTION,
-)
+from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity, DataUpdateCoordinator
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.helpers.entity_registry import async_get as async_get_entity_registry
 
 from .const import (
-    DOMAIN, ALARM_ID, ALARM_VALID_FROM, ALARM_VALID_TO, ALARM_PRIORITY, ALARM_REGION,
-    ALARM_TITLE, ALARM_HINT, ALARM_SIGNATURE, ALARM_NOALERT, LAST_UPDATE, WETTERALARM_DATA
+    DOMAIN, WETTERALARM_COORDINATOR
 )
 from .coordinator import WetterAlarmCoordinator
+from .helpers.sensor.remove import remove_unused_sensors
+
+from .consts.entities import WAEntityDescription
 
 _LOGGER = logging.getLogger(__name__)
-
-SENSOR_TYPES = {
-    ALARM_ID: ["Alarm ID", None, None, "mdi:identifier", False, None],
-    ALARM_VALID_FROM: ["Valid From", SensorDeviceClass.TIMESTAMP, None, "mdi:calendar-arrow-left", False, None],
-    ALARM_VALID_TO: ["Valid To", SensorDeviceClass.TIMESTAMP, None, "mdi:calendar-arrow-right", False, None],
-    ALARM_PRIORITY: ["Priority", None, None, "mdi:chevron-triple-up", False, None],
-    ALARM_REGION: ["Region", None, None, "mdi:map-marker-check-outline", False, None],
-    ALARM_TITLE: ["Title", None, None, "mdi:format-title", False, None],
-    ALARM_HINT: ["Hint", None, None, "mdi:account-alert", False, None],
-    ALARM_SIGNATURE: ["Signature", None, None, "mdi:signature-freehand", False, None],
-    LAST_UPDATE: ["Last Update", SensorDeviceClass.TIMESTAMP, None, "mdi:clock-check", False, None],
-
-    #TODO: Weather Sensors DAY (for Today/Actual Weather) from api-data (day_forecasts (array) -> find today's forecast with date = today key: date)
-    #! No Double Sensors for today (DAY and HOUR) -> HOUR values overwrite DAY values for today to prevent duplicate sensors
-    # temperature_min
-    # temperature_max
-    # wind_speed_max
-    # wind_direction
-    # wind_direction_name
-    # insolation
-    # insolation_max
-    # precipitation_amount
-    # precipitation_probability
-    # weather_icon (id to icon function needed from key symbol:int in api-data) ?
-    # mood
-    # lunar_phase
-    # lunar_phase_time
-    # lunar_phase_percentage
-    # sunrise
-    # sunset
-
-    #TODO: Weather Sensors HOUR (for Today/Actual Weather) from api-data (hour_forecasts (array) -> find today's forecast with date/time = today key: valid_time)
-    #! this values overwrite the DAY values for today to prevent duplicate sensors    
-    # temperature
-    # wind_speed_mean
-    # wind_speed_max
-    # wind_direction
-    # wind_direction_name
-    # wind_chill_temperature
-    # weather_icon (id to icon function needed from key symbol:int in api-data) ?
-    # precipitation_amount
-    # precipitation_probability
-    # mood
-    # lunar_phase
-    
-    #TODO: Camera Sensors from api-data. Possible a option in config to enable/disable
-    #! first get livecams_nearby from api-data (array) -> get the first 3 cams
-
-}
 
 
 async def async_setup_entry(
     hass: HomeAssistant, config_entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ):
-    _LOGGER.error(f"async_setup_entry called with config_entry {config_entry}")
-    poi_data = config_entry.data["poi_data"]
-    poi_id = poi_data["poiID"]
-    poi_name = poi_data["name"]
+    # _LOGGER.error(f"async_setup_entry called with config_entry {config_entry}")
 
-    coordinator = WetterAlarmCoordinator(
-        hass=hass, logger=_LOGGER, config_entry=config_entry, poi_name=poi_name, poi_id=poi_id
-    )
-    sensors = [
-        WetterAlarmSensor(coordinator, sensor_type)
-        for sensor_type in SENSOR_TYPES
-    ]
+    hass_data = hass.data[DOMAIN][config_entry.entry_id]
+    options = config_entry.options
+    # _LOGGER.error(f"WA Options {options}")
+
+    coordinator = hass_data[WETTERALARM_COORDINATOR]
+
+    sensors = []
+
+    for device_name, device_info in coordinator.data['devices'].items():
+        if device_info['active']:
+            sensors += [
+                WetterAlarmSensorEntity(coordinator, device_name, description)
+                for description in device_info['entries'].get('sensor', [])
+            ]
+
+    # _LOGGER.error(f"async_setup_entry called with sensors {sensors}")
+
     await coordinator.async_config_entry_first_refresh()
     async_add_entities(sensors)
 
+    #TODO: Remove unused sensors Repair!
+    # if not options.get("alert_sensors"):
+    #     await remove_unused_sensors(hass, config_entry, ALERT_SENSORS_LIST)
+    # if not options.get("weather_sensors"):
+    #     await remove_unused_sensors(hass, config_entry, WEATHER_SENSORS_LIST)
 
-class WetterAlarmSensor(CoordinatorEntity, SensorEntity):
+class WetterAlarmSensorEntity(CoordinatorEntity, SensorEntity):
     """Representation of a Wetter-Alarm Sensor."""
 
-    def __init__(self, coordinator: WetterAlarmCoordinator, sensor_type: str):
+    entity_description: WAEntityDescription
+    _attr_has_entity_name = True
+
+    def __init__(self, coordinator: WetterAlarmCoordinator, device_name: str, description: WAEntityDescription) -> None:
+        """Initialize the sensor."""
         super().__init__(coordinator)
+        self.entity_description = description
         self._coordinator = coordinator
-        self._sensor_type = sensor_type
-        self._name = SENSOR_TYPES[sensor_type][0]
-        self._device_class = SENSOR_TYPES[sensor_type][1]
-        self._unit_of_measurement = SENSOR_TYPES[sensor_type][2]
-        self._icon = SENSOR_TYPES[sensor_type][3]
-        self._entity_registry_enabled_default = SENSOR_TYPES[sensor_type][4]
-        self._state_class = SENSOR_TYPES[sensor_type][5]
-        self._attr_unique_id = f"{coordinator.get_poi_id}_{sensor_type}"
-        self._attr_name = f"{coordinator._name} {self._name}"
-        _LOGGER.debug(f"created Sensor of class {self.__class__.__name__} with uid {self._attr_unique_id}")
-
-    @property
-    def name(self) -> str | None:
-        return self._attr_name
-
-    @property
-    def unique_id(self) -> str | None:
-        return self._attr_unique_id
-
-    @property
-    def device_info(self) -> DeviceInfo:
-        """Return the device info."""
-        return DeviceInfo(
-            identifiers={(DOMAIN, str(self._coordinator.get_poi_id))},
-            name=f"Point of Interest - {self._coordinator._name}",
-            manufacturer="Wetter-Alarm",
-            model="API",
-        )
-
-    @property
-    def icon(self):
-        """Return the icon of the sensor."""
-        return self._icon
-
-    @property
-    def device_class(self):
-        """Return the device class of the sensor."""
-        return self._device_class
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement."""
-        return self._unit_of_measurement
-
-    @property
-    def state_class(self):
-        """Return the state class of the sensor."""
-        return self._state_class
+        self.device_name = device_name
+        self._attr_unique_id = f"{coordinator._poi_id}_{description.key}"
+        self._attr_translation_key = description.key
+        self._attr_translation_placeholders = {"poi_name": coordinator._name}
 
     @property
     def native_value(self) -> Any:
         """Return the state of the sensor."""
-        if self._sensor_type == LAST_UPDATE:
-            return self._coordinator.last_update if self._coordinator.last_update else None
-        value = self._coordinator.data.get(self._sensor_type)
-        _LOGGER.debug(f"Sensor {self._sensor_type} value: {value}")
-        if self._sensor_type in [ALARM_VALID_FROM, ALARM_VALID_TO] and value is None:
-            return None
-        return value if value is not None else ALARM_NOALERT
+        value = self.entity_description.value_fn(self._coordinator.data)
+        if self.entity_description.device_class == SensorDeviceClass.TIMESTAMP and value is not None:
+            try:
+                value = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            except ValueError as e:
+                _LOGGER.error(f"Error parsing datetime for {self.entity_description.key}: {e}")
+                return None
+        return value
+    
+    @property
+    def icon(self):
+        """Return the icon of the sensor."""
+        return self.entity_description.icon
+
+    @property
+    def device_info(self) -> DeviceInfo:
+        """Return the device info."""
+        return self._coordinator.get_device_info(self.device_name)
 
     @property
     def extra_state_attributes(self):
