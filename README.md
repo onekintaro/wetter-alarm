@@ -1,5 +1,11 @@
 # Wetter-Alarm [WIP/Rework]
 
+> [!CAUTION]
+> This is still a work in progress. The current version is not stable and may contain bugs.
+
+## Changelog
+- [Changelog](CHANGELOG.md)
+
 ![Logo][logo]
 
 [![License][license-shield]](LICENSE)
