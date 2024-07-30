@@ -17,13 +17,13 @@ from homeassistant.helpers.selector import (
 
 from . import WetterAlarmApiClient
 from .options_flow import WetterAlarmOptionsFlowHandler
-from .translate import load_translations
+from .helpers.common.translate import load_translations
 from .const import (
     DOMAIN,
     WA_PREFIXES
     )
-from .consts.options import Options as Opt
-from .consts.config import Config as Conf
+from .helpers.const.options import Options as Opt
+from .helpers.const.config import Config as Conf
 
 from .helpers.flow.baseOptions import get_base_vars, get_base_schema, get_input_vars
 from .helpers.flow.entityOptions import get_entity_vars, get_entity_schema, create_options

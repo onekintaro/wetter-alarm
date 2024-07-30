@@ -1,8 +1,8 @@
 import voluptuous as vol
 from homeassistant.helpers.selector import SelectSelector
 
-from ...consts.options import Options as Opt
-from ...consts.devices import Device, DeviceConst
+from ..const.options import Options as Opt
+from ..const.devices import Device, DeviceConst
 
 Entity = Opt.Entity
 

@@ -1,7 +1,7 @@
 import voluptuous as vol
 from homeassistant.helpers.selector import SelectSelector, NumberSelector, TextSelector, BooleanSelector
-from ...const import DOMAIN
-from ...consts.options import Options as Opt
+
+from ..const.options import Options as Opt
 
 Base = Opt.Base
 

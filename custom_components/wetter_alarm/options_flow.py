@@ -9,7 +9,7 @@ from homeassistant.helpers.selector import (
     BooleanSelector,
 )
 from .const import DOMAIN
-from .consts.options import Options as Opt
+from .helpers.const.options import Options as Opt
 from .helpers.flow.baseOptions import get_base_vars, get_base_schema, get_input_vars
 from .helpers.flow.entityOptions import get_entity_vars, get_entity_schema, create_options
 

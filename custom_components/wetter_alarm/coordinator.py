@@ -6,9 +6,9 @@ import logging
 
 from .client import WetterAlarmApiClient
 from .const import DOMAIN
-from .consts.config import Config as Cfg
-from .consts.options import OptionConsts as Opt, Options
-from .consts.devices import Device, DeviceConst
+from .helpers.const.config import Config as Cfg
+from .helpers.const.options import OptionConsts as Opt, Options
+from .helpers.const.devices import Device, DeviceConst
 
 _LOGGER = logging.getLogger(__name__)
 

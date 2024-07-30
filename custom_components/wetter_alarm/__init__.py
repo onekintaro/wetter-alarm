@@ -8,7 +8,7 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 
 from .const import DOMAIN, WETTERALARM_COORDINATOR, WETTERALARM_DATA
-from .consts.options import Options as Opt
+from .helpers.const.options import Options as Opt
 from .client import WetterAlarmApiClient
 from .coordinator import WetterAlarmCoordinator  # Importiere den Coordinator
 
