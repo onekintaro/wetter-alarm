@@ -2,18 +2,18 @@ from __future__ import annotations
 
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 
 import requests
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 
 
-from .condition import mood_convert
+from .helpers.weather.mood import mood_convert
 
-from .consts.config import Config as Cfg
-from .consts.options import OptionConsts as Opt, Options
-from .consts.devices import Device
+from .helpers.const.config import Config as Cfg
+from .helpers.const.options import OptionConsts as Opt, Options
+from .helpers.const.devices import Device
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -218,7 +218,7 @@ class WetterAlarmApiClient:
     def _combine_forecast_data(self, day_forecasts, hour_forecasts):
         """Combine daily and hourly forecasts to get current weather data."""
         current_data = {}
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
 
         # Find the latest day forecast
         latest_day_forecast = None
