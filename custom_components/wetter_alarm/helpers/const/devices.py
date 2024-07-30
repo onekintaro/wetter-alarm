@@ -6,7 +6,7 @@ from collections import defaultdict
 from .options import Options
 from .entities import Entity
 
-from ..helpers.common.recursiveSearch import recursive_search
+from ..common.recursiveSearch import recursive_search
 
 from homeassistant.components.sensor import SensorEntityDescription, SensorDeviceClass, SensorStateClass
 from homeassistant.helpers.typing import StateType

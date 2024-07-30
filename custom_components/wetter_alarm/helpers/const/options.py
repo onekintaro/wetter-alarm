@@ -121,6 +121,8 @@ class OptionConsts:
             if int_type == Options.Base.Update.TYPE_LIST[0] and int_val < Options.Base.Update.MIN:
                 _LOGGER.warning(f"Update interval is smaller than {Options.Base.Update.MIN} minutes. To prevent abuse, the interval is set to {Options.Base.Update.DEFAULT} minutes.")
                 return timedelta(minutes=Options.Base.Update.DEFAULT)
+                #DEBUG
+                #return timedelta(minutes=int_val)
 
             if not int_type:
                 return timedelta(minutes=Options.Base.Update.DEFAULT)
