@@ -1,9 +1,18 @@
-## WIP-VERSION 0.5.5-BETA (2021-09-26)
+# CHANGELOG
 > [!IMPORTANT]
 > This is still a work in progress. The current version is not stable and may contain bugs.
 
+## WIP-VERSION 0.5.6-BETA (2021-09-30)
+- Moved: Translate Helper to helpers folder
+- Moved: consts/ to helpers/const/ folder (still need some more rework)
+- Moved: condition.py to helpers folder and renamed to mood.py
+- Fix: Imports
+- Fix: client.py (.utcnow() was deprecated, replaced with .now(timezone.utc))
+- Fix Issue: #1 in weather.py (should now Update weather data correctly 🌞)
+
+## WIP-VERSION 0.5.5-BETA (2021-09-26)
 > [!CAUTION]
-> You need to Delete all Configured Entities and Reconfigure the Integration. This is due to the rework of the Config.
+> You need to Delete all Configured Entities and Reconfigure the Integration, if you are Update from a lower Version. This is due to the rework of the Config.
 
 Changes:
 - Rework: Configuration Flow
