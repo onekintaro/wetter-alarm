@@ -18,7 +18,7 @@ from .const import (
     WETTERALARM_COORDINATOR
 )
 
-from .consts.devices import DeviceConst
+from .helpers.const.devices import DeviceConst
 
 _LOGGER = logging.getLogger(__name__)
 
