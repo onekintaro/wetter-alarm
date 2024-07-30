@@ -19,7 +19,7 @@ from .const import (
 from .coordinator import WetterAlarmCoordinator
 from .helpers.sensor.remove import remove_unused_sensors
 
-from .consts.entities import WAEntityDescription
+from .helpers.const.entities import WAEntityDescription
 
 _LOGGER = logging.getLogger(__name__)
 
