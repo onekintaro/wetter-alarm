@@ -17,7 +17,9 @@
 
 | Platform | Description                      |
 | -------- | -------------------------------- |
-| `sensor` | Show info from Wetter-Alarm API. |
+| `sensor` | Show Alert/Weather info from Wetter-Alarm API. |
+| `weather` | Show weather info from Wetter-Alarm API. |
+| `calendar` | Show Alerts from Wetter-Alarm API. |
 
 ## Overview
 
