@@ -2,6 +2,14 @@
 > [!IMPORTANT]
 > This is still a work in progress. The current version is not stable and may contain bugs.
 
+## 0.5.7 (2026-11-05)
+- Fix: Update calendar state handling for Home Assistant 2026.11.
+- Fix: Handle missing alert dates without failing calendar updates.
+- Fix: Stop logging an error in the calendar when no alerts are active.
+- Fix: Use the current Home Assistant device registry and calendar callback APIs.
+- Fix: Remove deprecated config flow and entity setup arguments.
+- Compatibility: Require Home Assistant 2026.8.0 or newer.
+
 ## WIP-VERSION 0.5.6-BETA (2021-09-30)
 - Moved: Translate Helper to helpers folder
 - Moved: consts/ to helpers/const/ folder (still need some more rework)
@@ -46,4 +54,3 @@ Changes:
 ## WIP-VERSION 0.1.0 to 0.5.4 (NO DATE)
 > [!IMPORTANT]
 > This Versions are not documented. 😅
-

@@ -38,7 +38,7 @@ async def async_setup_entry(
     if weather_device["active"] and wetteralarm_data:
         weather_entry = weather_device['entries'].get('weather', [])
         if weather_entry:
-            async_add_entities([WetterAlarmWeather(wetteralarm_data, coordinator)], False)
+            async_add_entities([WetterAlarmWeather(wetteralarm_data, coordinator)])
 
 class WetterAlarmWeather(WeatherEntity):
     """Implementation of Wetter-Alarm weather."""

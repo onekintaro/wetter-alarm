@@ -1,6 +1,6 @@
 {
   "name": "Wetter-Alarm",
-  "homeassistant": "2024.4.1",
+  "homeassistant": "2026.8.0",
   "hacs": "0.19.0",
   "render_readme": true,
   "country": "CH"

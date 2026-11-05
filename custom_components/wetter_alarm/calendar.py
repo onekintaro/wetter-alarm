@@ -1,13 +1,9 @@
 """Support for Wetter-Alarm weather service."""
 
 import logging
-from homeassistant.components.calendar import (
-    CalendarEntity,
-    CalendarEvent,
-    STATE_ON,
-    STATE_OFF
-)
-from homeassistant.core import HomeAssistant
+from homeassistant.components.calendar import CalendarEntity, CalendarEvent
+from homeassistant.const import STATE_OFF, STATE_ON
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.typing import ConfigType
 from homeassistant.util import slugify
@@ -28,7 +24,7 @@ async def async_setup_entry(
     """Add a calendar entity from a config_entry."""
     hass_data = hass.data[DOMAIN][entry.entry_id]
     coordinator = hass_data[WETTERALARM_COORDINATOR]
-    async_add_entities([WetterAlarmCalendar(coordinator)], False)
+    async_add_entities([WetterAlarmCalendar(coordinator)])
 
 
 class WetterAlarmCalendar(CalendarEntity):
@@ -87,18 +83,22 @@ class WetterAlarmCalendar(CalendarEntity):
         self.async_on_remove(
             self._coordinator.async_add_listener(self._handle_coordinator_update)
         )
-        await self._handle_coordinator_update()
+        self._handle_coordinator_update()
 
-    async def _handle_coordinator_update(self):
+    @callback
+    def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
         #_LOGGER.debug(f"Coordinator data: {self._coordinator.data}")
 
         events = []
-        for alarm in self._coordinator.data['meteo_alerts'].get("alert_list", []):
+        meteo_alerts = self._coordinator.data['meteo_alerts']
+        # Without active alerts the client returns a placeholder entry for the sensors.
+        alert_list = meteo_alerts.get("alert_list", []) if meteo_alerts.get("has_alerts") else []
+        for alarm in alert_list:
             if isinstance(alarm, dict):
                 #_LOGGER.debug(f"Processing alarm: {alarm}")
-                start_date = dt_util.parse_datetime(alarm.get("valid_from"))
-                end_date = dt_util.parse_datetime(alarm.get("valid_to"))
+                start_date = dt_util.parse_datetime(alarm.get("valid_from")) if isinstance(alarm.get("valid_from"), str) else None
+                end_date = dt_util.parse_datetime(alarm.get("valid_to")) if isinstance(alarm.get("valid_to"), str) else None
                 if start_date and end_date:
                     event = CalendarEvent(
                         summary=alarm.get("title", "No Title"),

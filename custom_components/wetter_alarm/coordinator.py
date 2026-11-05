@@ -2,6 +2,7 @@ from datetime import timedelta, datetime, timezone
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers import device_registry as dr
 import logging
 
 from .client import WetterAlarmApiClient
@@ -21,6 +22,7 @@ class WetterAlarmCoordinator(DataUpdateCoordinator):
         self._logger = _LOGGER
         self.last_update = None
         self._config_entry = config_entry
+        self._hub_device_id: str | None = None
         
         Device.setConf(config_entry.options)
         self._devices = Device.getEntries()
@@ -46,9 +48,22 @@ class WetterAlarmCoordinator(DataUpdateCoordinator):
                 manufacturer="Wetter-Alarm",
                 model="API v8",
                 entry_type="service",
-                via_device=(DOMAIN, f"{self._poi_id}-hub") if device_info['active'] else None
+                via_device_id=self._hub_device_id if device_info['active'] else None,
             )
         return self.get_hub_device_info()
+
+    def register_hub_device(self) -> None:
+        """Register the hub device before registering devices connected to it."""
+        hub_device = dr.async_get(self.hass).async_get_or_create(
+            config_entry_id=self._config_entry.entry_id,
+            identifiers={(DOMAIN, f"{self._poi_id}-hub")},
+            translation_key=DeviceConst.HUB,
+            translation_placeholders={"poi_name_short": self._name},
+            manufacturer="Wetter-Alarm",
+            model="API v8",
+            entry_type="service",
+        )
+        self._hub_device_id = hub_device.id
 
     def get_hub_device_info(self) -> DeviceInfo:
         """Return the device info for the city."""
